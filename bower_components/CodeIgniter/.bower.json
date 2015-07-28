@@ -1,0 +1,15 @@
+{
+  "name": "CodeIgniter",
+  "homepage": "https://github.com/bcit-ci/CodeIgniter",
+  "version": "3.0.0",
+  "_release": "3.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.0",
+    "commit": "3fe79499c5bedb5b3bc4281821776f031f73674e"
+  },
+  "_source": "git://github.com/bcit-ci/CodeIgniter.git",
+  "_target": "~3.0.0",
+  "_originalSource": "bcit-ci/CodeIgniter",
+  "_direct": true
+}

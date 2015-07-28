@@ -1,0 +1,29 @@
+{
+  "name": "donate-sbh",
+  "version": "0.0.1",
+  "authors": [
+    "SunDi3yansyah <sundi3yansyah@gmail.com>"
+  ],
+  "description": "Donation for Surabaya Blackhat",
+  "main": "index.php",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "surabaya",
+    "blackhat",
+    "sbh",
+    "surabaya",
+    "donate",
+    "donasi"
+  ],
+  "license": "MIT",
+  "homepage": "http://donate.surabayablackhat.org",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
