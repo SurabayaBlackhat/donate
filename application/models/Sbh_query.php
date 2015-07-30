@@ -65,6 +65,35 @@ class Sbh_query extends CI_Model
 		}
 	}
 
+	function pagination($table,$limit,$offset,$order)
+	{
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->limit($limit,$offset);
+		$this->db->order_by($order);
+		$query = $this->db->get();
+		if ($query->num_rows() == 0) {
+			return FALSE;
+		} else {
+			return $query->result();
+		}
+	}
+
+	function pagination_join($table1,$limit,$offset,$table2,$join,$order)
+	{
+		$this->db->select('*');
+		$this->db->from($table1);
+		$this->db->join($table2,$join);
+		$this->db->limit($limit,$offset);
+		$this->db->order_by($order);
+		$query = $this->db->get();
+		if ($query->num_rows() == 0) {
+			return FALSE;
+		} else {
+			return $query->result();
+		}
+	}
+
 	function join_where($table1,$table2,$join,$where,$order)
 	{
 		$this->db->select('*');

@@ -7,11 +7,6 @@
  */
 class Staff_konfirmasi extends Staff
 {
-	function __construct()
-	{
-		parent::__construct();
-	}
-
 	function index()
 	{
 		$data = array(
@@ -30,6 +25,7 @@ class Staff_konfirmasi extends Staff
 				} else {
 					$data['gambar'] = array();
 				}
+				$data['id'] = $this->_get_id($id);
 				$this->load->view('staff/konfirmasi/struk', $data);
 			} else {
 				show_404();
@@ -82,7 +78,16 @@ class Staff_konfirmasi extends Staff
 
 	function drop($id)
 	{
-
+		if (isset($id)) {
+			if (!empty($this->_get_id($id))) {
+				$this->sbh_query->delete('konfirmasi', array('id_konfirmasi' => $id));
+				redirect('staff_konfirmasi');
+			} else {
+				show_404();
+			}
+		} else {
+			redirect('staff_konfirmasi');
+		}
 	}
 
 	function _get_id($id)

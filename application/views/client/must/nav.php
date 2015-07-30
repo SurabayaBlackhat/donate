@@ -19,12 +19,17 @@
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="drop-nav">
+                  <li><a href="<?php echo base_url('sbh/howto'); ?>"><i class="fa fa-question-circle"></i> How to?</a></li>
                   <li><a href="<?php echo base_url('sbh'); ?>"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-                  <?php if ($this->lib->role() === '1'): ?>
-                    <li><a href="<?php echo base_url('staff_konfirmasi'); ?>"><i class="fa fa-tachometer"></i> Staff</a></li>
-                  <?php endif ?>
                   <li><a href="<?php echo base_url('sbh/payment'); ?>"><i class="fa fa-credit-card"></i> Payment</a></li>
                   <li><a href="<?php echo base_url('sbh/logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+                  <?php if ($this->lib->role() === '1'): ?>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Administrator</li>
+                    <li><a href="<?php echo base_url('staff_konfirmasi'); ?>">Konfirmasi</a></li>
+                    <li><a href="<?php echo base_url('staff_user'); ?>">User</a></li>
+                    <li><a href="<?php echo base_url('staff_rekening'); ?>">Rekening</a></li>
+                  <?php endif ?>
                 </ul>
               </li>
             <?php endforeach ?>

@@ -67,11 +67,6 @@
 <div class="center">
   <button onclick="goBack()" class="btn btn-primary" role="button"><i class="fa fa-chevron-left"></i> Back</button>
 </div>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </div>
 <div class="col-xs-6">
 <?php if ($count_image === 1): ?>

@@ -11,6 +11,9 @@ body {
 .center {
 	text-align: center !important;
 }
+.left {
+  text-align: left !important;
+}
 .table th.center, .table td.center {
   text-align: center !important;
 }

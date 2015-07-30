@@ -33,7 +33,7 @@ $berita_rekening = array(
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Konfirmasi - <?php echo $this->config->item('name'); ?></title>
+<title>Edit Konfirmasi - <?php echo $this->config->item('name'); ?></title>
 <?php $this->load->view('client/must/head'); ?>
 <body class="bs-docs-home">
 
@@ -41,7 +41,7 @@ $berita_rekening = array(
 
 <div class="bs-docs-header" id="content" tabindex="-1">
   <div class="container">
-    <h1>Konfirmasi</h1>
+    <h1>Edit Konfirmasi</h1>
   </div>
 </div>
 

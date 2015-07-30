@@ -145,6 +145,16 @@ class Staff extends CI_Controller
 		}
 	}
 	
+	function pm_NSpaceStripe($str)
+	{
+		if (preg_match('/^[0-9-\s]+$/', $str)) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('pm_NSpaceStripe', 'Terjadi kesalahan dalam bidang %s');
+			return FALSE;
+		}
+	}
+	
 	function pm_StrongPassword($str)
 	{
 		if (preg_match('/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $str)) {
@@ -161,6 +171,16 @@ class Staff extends CI_Controller
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('pm_rekening', 'Terjadi kesalahan dalam bidang %s');
+			return FALSE;
+		}
+	}
+
+	function pm_role($id)
+	{
+		if ($this->sbh_query->id('role', array('id_role' => $id))){
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('pm_role', 'Terjadi kesalahan dalam bidang %s');
 			return FALSE;
 		}
 	}

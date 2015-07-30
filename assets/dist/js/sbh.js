@@ -21,3 +21,6 @@ Dropzone.options.DZid = {
     });
   }
 };
+function goBack() {
+    window.history.back();
+}

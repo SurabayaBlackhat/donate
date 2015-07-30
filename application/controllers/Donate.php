@@ -5,13 +5,8 @@
  * @version		0.1
  * @license		MIT
  */
-class Donate extends Main {
-
-	function __construct()
-	{
-		parent::__construct();
-	}
-
+class Donate extends Main
+{
 	function index()
 	{
 		if (!$this->lib->id_user() && !$this->lib->username()) {

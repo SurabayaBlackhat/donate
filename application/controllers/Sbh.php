@@ -7,11 +7,6 @@
  */
 class Sbh extends Main
 {
-	function __construct()
-	{
-		parent::__construct();
-	}
-
 	function index()
 	{
 		if ($this->lib->id_user() && $this->lib->username()) {
@@ -224,6 +219,11 @@ class Sbh extends Main
 		} else {
 			redirect('sbh/login');
 		}
+	}
+
+	function howto()
+	{
+		$this->load->view('client/sbh/howto');
 	}
 
 	function logout()
