@@ -1,0 +1,10 @@
+SET @count = 0;
+UPDATE `konfirmasi` SET `konfirmasi`.`id_konfirmasi` = @count:= @count + 1;
+SET @count = 0;
+UPDATE `konfirmasi_gambar` SET `konfirmasi_gambar`.`id_konfirmasi_gambar` = @count:= @count + 1;
+SET @count = 0;
+UPDATE `rekening` SET `rekening`.`id_rekening` = @count:= @count + 1;
+SET @count = 0;
+UPDATE `role` SET `role`.`id_role` = @count:= @count + 1;
+SET @count = 0;
+UPDATE `user` SET `user`.`id_user` = @count:= @count + 1;

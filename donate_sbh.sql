@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2015 at 12:54 PM
+-- Generation Time: Aug 02, 2015 at 04:16 PM
 -- Server version: 5.5.44-MariaDB-1~trusty-log
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -39,14 +39,6 @@ CREATE TABLE IF NOT EXISTS `konfirmasi` (
   `hash` varchar(40) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `konfirmasi`
---
-
-INSERT INTO `konfirmasi` (`id_konfirmasi`, `id_user`, `atas_nama_konfirmasi`, `no_rekening_konfirmasi`, `jumlah`, `berita_rekening`, `status`, `tanggal_waktu`, `ke_rekening`, `hash`) VALUES
-(1, 1, 'CAHYADI TRIYANSAH', '12345678', '10000', 'nothing else', 'VALID', '2015-07-27 05:13:13', 2, '3861492746257d2d67ab46ba9ad765982249eef9'),
-(2, 2, 'SIAPA SAYA', '334342432432', '44334234', 'sdadsasdadsa', NULL, '2015-07-26 16:49:07', 2, '6bdf853170df60ecd4d8f2781b92da152d0f2a7c');
-
 -- --------------------------------------------------------
 
 --
@@ -58,13 +50,6 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_gambar` (
   `id_konfirmasi_relation` int(11) NOT NULL,
   `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `konfirmasi_gambar`
---
-
-INSERT INTO `konfirmasi_gambar` (`id_konfirmasi_gambar`, `id_konfirmasi_relation`, `gambar`) VALUES
-(1, 1, '09f4d9f222b996f1d4e2a1f0f25b28e9.png');
 
 -- --------------------------------------------------------
 
@@ -142,9 +127,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `nama_user`, `role`, `verifikasi_email`, `code_verifikasi`) VALUES
-(1, 'SunDi3yansyah', '3cce714f8dcb7680922b275752311f8bac178639', 'sundi3yansyah@gmail.com', 'Cahyadi Triyansyah', 1, '1', ''),
-(2, 'demo', '3cce714f8dcb7680922b275752311f8bac178639', 'sundi3yansyah@gmail.com', 'demo user', 2, '1', ''),
-(3, 'demos', '3cce714f8dcb7680922b275752311f8bac178639', 'sundi3yansssyah@gmail.com', 'demo user', 2, '0', '08403b62d2c24f62f5ba8f5dc9652fc4');
+(1, 'SunDi3yansyah', '3cce714f8dcb7680922b275752311f8bac178639', 'sundi3yansyah@gmail.com', 'Cahyadi Triyansyah', 1, '1', '');
 
 --
 -- Indexes for dumped tables
