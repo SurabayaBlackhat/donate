@@ -1,4 +1,6 @@
 db
+bower_components
+bower_components/*
 .htaccess
 robots.txt
 favicon.ico
