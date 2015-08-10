@@ -24,7 +24,7 @@ class Staff_user extends Staff
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length[5]|max_length[100]|alpha_dash');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|min_length[5]|max_length[100]|valid_email');
 		$this->form_validation->set_rules('nama_user', 'Nama', 'trim|required|xss_clean|min_length[3]|max_length[100]|callback_pm_ASpace');
-		$this->form_validation->set_rules('role', 'Role', 'trim|xss_clean|min_length[3]|max_length[100]|callback_pm_role');
+		$this->form_validation->set_rules('role', 'Role', 'trim|xss_clean|min_length[1]|max_length[11]|callback_pm_role');
 		$this->form_validation->set_error_delimiters('', '');
 		if ($this->form_validation->run() == TRUE) {
 			$edit = array(
@@ -47,11 +47,15 @@ class Staff_user extends Staff
 	function drop($id)
 	{
 		if (isset($id)) {
-			if (!empty($this->_get_id($id))) {
+			$data = array(
+				'id' => $this->_get_id($id)
+				);
+			if (!empty($data['id'])) {
 				$this->sbh_query->delete('user', array('id_user' => $id));
 				redirect('staff_user');
 			} else {
 				show_404();
+				return FALSE;
 			}
 		} else {
 			redirect('staff_user');

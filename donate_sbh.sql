@@ -69,9 +69,8 @@ CREATE TABLE IF NOT EXISTS `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rekening`, `atas_nama_rekening`, `no_rekening`, `bank`) VALUES
-(1, 'Andik Noeviyanto', '?', '?'),
-(2, 'CAHYADI TRIYANSAH', '4564924603', 'BCA'),
-(3, 'CAHYADI TRIYANSAH', '6618-01-015413-53-2', 'BRI');
+(1, 'Andik Noeviyanto', '4700287551', 'BCA'),
+(2, 'CAHYADI TRIYANSAH', '6618-01-015413-53-2', 'BRI');
 
 -- --------------------------------------------------------
 
@@ -118,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) NOT NULL,
   `nama_user` varchar(100) NOT NULL,
   `role` int(11) NOT NULL DEFAULT '2',
-  `verifikasi_email` enum('0','1') NOT NULL DEFAULT '0',
+  `verifikasi_email` int(11) NOT NULL DEFAULT '0',
   `code_verifikasi` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 

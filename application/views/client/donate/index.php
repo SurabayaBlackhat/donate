@@ -1,4 +1,3 @@
-<?php if (!$this->lib->register()): ?>
 <?php
 $atas_nama_konfirmasi = array(
   'name' => 'atas_nama_konfirmasi',
@@ -30,7 +29,6 @@ $berita_rekening = array(
   'rows' => 3,
   );
 ?>
-<?php endif ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

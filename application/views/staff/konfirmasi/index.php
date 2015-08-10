@@ -63,6 +63,7 @@
 <?php endif ?>
 </div>
 
+<?php if (!empty($all)): ?>
 <?php foreach ($all as $row): ?>
 <div class="modal fade _modal-<?php echo $row->id_konfirmasi; ?>" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm">
@@ -80,5 +81,6 @@
   </div>
 </div>
 <?php endforeach ?>
+<?php endif ?>
 
 <?php $this->load->view('client/must/footer'); ?>

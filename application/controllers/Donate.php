@@ -16,7 +16,7 @@ class Donate extends Main
 				$this->load->view('client/donate/sudah_donate');
 			} else {
 				$this->form_validation->set_rules('atas_nama_konfirmasi', 'Atas Nama', 'trim|required|xss_clean|min_length[5]|max_length[100]|callback_pm_ASpace');
-				$this->form_validation->set_rules('no_rekening_konfirmasi', 'Nomor Rekening', 'trim|required|xss_clean|numeric');
+				$this->form_validation->set_rules('no_rekening_konfirmasi', 'Nomor Rekening', 'trim|required|xss_clean|callback_pm_NStripe');
 				$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
 				$this->form_validation->set_rules('berita_rekening', 'Berita', 'trim|required|xss_clean|min_length[5]|max_length[100]|callback_pm_ANSpace');
 				$this->form_validation->set_rules('ke_rekening', 'Ke Rekening', 'trim|required|xss_clean|min_length[1]|max_length[11]|callback_pm_rekening');
@@ -31,16 +31,17 @@ class Donate extends Main
 						'status' => NULL,
 						'tanggal_waktu' => date('Y-m-d H:i:s'),
 						'ke_rekening' => $this->form_validation->set_value('ke_rekening'),
+						'hash' => sha1(microtime()),
 						);
 					$this->sbh_query->insert('konfirmasi', $insert);
 					$this->session->set_userdata(array(
 						'donate' => 'TRUE'
 						));
 					foreach ($this->lib->record() as $user) {
-						$this->email->from($this->config->item('email'), $this->config->item('nama'));
-						$this->email->reply_to($this->config->item('email'), $this->config->item('nama'));
+						$this->email->from($this->config->item('email'), $this->config->item('name'));
+						$this->email->reply_to($this->config->item('email'), $this->config->item('name'));
 						$this->email->to($user->email);
-						$this->email->subject(sprintf('Your Donate - ' . $insert['atas_nama_konfirmasi'], $this->config->item('nama')));
+						$this->email->subject(sprintf('Your Donate - ' . $insert['atas_nama_konfirmasi'], $this->config->item('name')));
 						$this->email->message($this->load->view('client/email/donate', $insert, TRUE));
 						$this->email->send();
 					}

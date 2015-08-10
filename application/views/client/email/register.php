@@ -1,4 +1,4 @@
-<b>Confirmation Your Register Account on <?php echo $this->config->item('nama'); ?></b>
+<b>Confirmation Your Register Account on <?php echo $this->config->item('name'); ?></b>
 <br>
 <p>
 Username : <?php echo $username; ?>

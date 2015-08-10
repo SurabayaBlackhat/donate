@@ -43,6 +43,7 @@ class Sbh extends Main
 					}					
 				} else {
 					show_404();
+					return FALSE;
 				}
 			} else {
 				redirect('sbh');
@@ -104,6 +105,7 @@ class Sbh extends Main
 					}
 				} else {
 					show_404();
+					return FALSE;
 				}
 			} else {
 				redirect('sbh');
@@ -157,10 +159,10 @@ class Sbh extends Main
 						$this->session->set_userdata(array(
 							'register' => 'TRUE'
 							));
-						$this->email->from($this->config->item('email'), $this->config->item('nama'));
-						$this->email->reply_to($this->config->item('email'), $this->config->item('nama'));
+						$this->email->from($this->config->item('email'), $this->config->item('name'));
+						$this->email->reply_to($this->config->item('email'), $this->config->item('name'));
 						$this->email->to($insert['email']);
-						$this->email->subject(sprintf('Register Account', $this->config->item('nama')));
+						$this->email->subject(sprintf('Register Account', $this->config->item('name')));
 						$this->email->message($this->load->view('client/email/register', $insert, TRUE));
 						$this->email->send();
 						$this->load->view('client/sbh/register_sukses');
@@ -223,7 +225,12 @@ class Sbh extends Main
 
 	function howto()
 	{
-		$this->load->view('client/sbh/howto');
+		if ($this->lib->id_user() && $this->lib->username()) {
+			$this->load->view('client/sbh/howto');
+		} else {
+			show_404();
+			return FALSE;
+		}
 	}
 
 	function logout()
@@ -245,10 +252,10 @@ class Sbh extends Main
 				);
 			if (!empty($data['array_hash'])) {
 				$update = array(
-					'verifikasi_email' => 1,
+					'verifikasi_email' => '1',
 					'code_verifikasi' => NULL,
 					);
-				$this->sbh_query->update('user', $update);
+				$this->sbh_query->update('user', $update, array('code_verifikasi' => $hash));
 				$this->load->view('client/sbh/verifikasi_email_valid');
 			} else {
 				$this->load->view('client/sbh/verifikasi_email_invalid');

@@ -18,7 +18,10 @@ class Staff_konfirmasi extends Staff
 	function struk($id)
 	{
 		if (isset($id)) {
-			if (!empty($this->_get_id($id))) {
+			$data = array(
+				'id' => $this->_get_id($id)
+				);
+			if (!empty($data['id'])) {
 				$check_gambar = $this->sbh_query->join_where('konfirmasi_gambar', 'konfirmasi', 'konfirmasi_gambar.id_konfirmasi_relation=konfirmasi.id_konfirmasi', array('id_konfirmasi' => $id), 'id_konfirmasi_gambar ASC');
 				if ($check_gambar != FALSE) {
 					$data['gambar'] = $check_gambar;
@@ -29,6 +32,7 @@ class Staff_konfirmasi extends Staff
 				$this->load->view('staff/konfirmasi/struk', $data);
 			} else {
 				show_404();
+				return FALSE;
 			}			
 		} else {
 			redirect('staff_konfirmasi');
@@ -38,13 +42,16 @@ class Staff_konfirmasi extends Staff
 	function edit($id)
 	{
 		if (isset($id)) {
-			if (!empty($this->_get_id($id))) {
+			$data = array(
+				'id' => $this->_get_id($id)
+				);
+			if (!empty($data['id'])) {
 				$data = array(
 					'id' => $this->_get_id($id),
 					'rekening' => $this->sbh_query->all('rekening', 'id_rekening ASC'),
 					);
 				$this->form_validation->set_rules('atas_nama_konfirmasi', 'Atas Nama', 'trim|required|xss_clean|min_length[5]|max_length[100]|callback_pm_ASpace');
-				$this->form_validation->set_rules('no_rekening_konfirmasi', 'Nomor Rekening', 'trim|required|xss_clean|numeric');
+				$this->form_validation->set_rules('no_rekening_konfirmasi', 'Nomor Rekening', 'trim|required|xss_clean|callback_pm_NStripe');
 				$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
 				$this->form_validation->set_rules('berita_rekening', 'Berita', 'trim|required|xss_clean|min_length[5]|max_length[100]|callback_pm_ANSpace');
 				$this->form_validation->set_rules('status', 'Status', 'trim|xss_clean|min_length[5]|max_length[7]');
@@ -70,6 +77,7 @@ class Staff_konfirmasi extends Staff
 				}
 			} else {
 				show_404();
+				return FALSE;
 			}			
 		} else {
 			redirect('staff_konfirmasi');
@@ -79,11 +87,15 @@ class Staff_konfirmasi extends Staff
 	function drop($id)
 	{
 		if (isset($id)) {
-			if (!empty($this->_get_id($id))) {
+			$data = array(
+				'id' => $this->_get_id($id)
+				);
+			if (!empty($data['id'])) {
 				$this->sbh_query->delete('konfirmasi', array('id_konfirmasi' => $id));
 				redirect('staff_konfirmasi');
 			} else {
 				show_404();
+				return FALSE;
 			}
 		} else {
 			redirect('staff_konfirmasi');

@@ -59,11 +59,15 @@ class Staff_rekening extends Staff
 	function drop($id)
 	{
 		if (isset($id)) {
-			if (!empty($this->_get_id($id))) {
+			$data = array(
+				'id' => $this->_get_id($id)
+				);
+			if (!empty($data['id'])) {
 				$this->sbh_query->delete('rekening', array('id_rekening' => $id));
 				redirect('staff_rekening');
 			} else {
 				show_404();
+				return FALSE;
 			}
 		} else {
 			redirect('staff_rekening');
